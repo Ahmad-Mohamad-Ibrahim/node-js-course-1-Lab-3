@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/bootstrap">
+</head>
+<body>
+    <form action="/login" method="post" class="container" id="loginForm">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <script>
+        async function cfetch(url,options){
+            try
+            {
+                const res = await fetch("http://localhost:8088/" + url, options);
+                const resData = await res.json();
+                return resData;
+            }catch(err){
+                alert(err.msg);
+            }
+        }
+
+        document.getElementById("loginForm").addEventListener("submit" ,async function login(e) {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const body ={
+                email : email,
+                password : password
+            }
+            console.log(body);
+            let res = await cfetch("login",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(body)
+            });
+            window.location.href = "/profile";
+        });
+    </script>
+</body>
+</html>

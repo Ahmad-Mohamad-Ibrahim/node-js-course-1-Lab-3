@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car</title>
+    <link href="/bootstrap" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+    <form action="/add" method="post">
+        <div class="mb-3">
+          <label for="model" class="form-label">Model</label>
+          <input type="text" class="form-control" id="model" name="model">
+        </div>
+
+        <div class="mb-3">
+          <label for="licence" class="form-label">Licence No.</label>
+          <input type="text" class="form-control" id="licence" name="licence">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</body>
+</html>
